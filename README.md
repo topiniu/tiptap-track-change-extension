@@ -1,66 +1,114 @@
 # TrackChangeExtension
 
-A Track Change Extension for Tiptap. Like the revision in Microsoft Office Word.
+A track change extension for Tiptap, similar to revision mode in Microsoft Word.
 
-## Demo
+This fork has been migrated to `Tiptap 3.18.0`.
 
-[Visit Demo](https://track-change.onrender.com/)
+## Status
 
-The demo is deployed on [render.com](https://www.render.com). You maybe need a VPN if you are in china
+- Tiptap version: `@tiptap/core@3.18.0`
+- ProseMirror bridge: `@tiptap/pm@3.18.0`
+- Demo: local Vite demo included in this repository
 
 ## Installation
 
-Install from npm or copy `src/index.ts` into your project. This package targets `@tiptap/core@3.18.0` and `@tiptap/pm@3.18.0`.
+Install this package or copy `src/index.ts` into your own project.
 
-## Usage in Vue3 with Tiptap 3
+Peer dependencies:
 
-```javascript
+```bash
+npm install @tiptap/core@3.18.0 @tiptap/pm@3.18.0
+```
 
-import TrackChangeExtension from 'index.ts'
-or
+If you want to run this fork locally:
+
+```bash
+npm install
+```
+
+## Usage
+
+```ts
 import TrackChangeExtension from 'track-change-extension'
 
-const myTrackChangeEnabled = ref(false)
+const editor = new Editor({
+  extensions: [
+    StarterKit,
+    TrackChangeExtension.configure({
+      enabled: true,
+      dataOpUserId: 'u-1001',
+      dataOpUserNickname: 'Alice',
+      onStatusChange(status: boolean) {
+        console.log('track change:', status)
+      },
+    }),
+  ],
+})
+```
 
-extensions: [
-  ...OtherTiptapExtensions,
-  TrackChangeExtension.configure({
-    enabled: true,
-    dataOpUserId: '', // set the op userId
-    dataOpUserNickname: '', // set the op user nickname
-    onStatusChange (status: boolean) {
-      myTrackChangeEnabled = status
-    }
-  }),
-]
+## Commands
 
-// commands
+```ts
+editor.commands.setTrackChangeStatus(true)
+editor.commands.getTrackChangeStatus()
+editor.commands.toggleTrackChangeStatus()
 
-// accept one change near by the cursor or an active selection range
 editor.commands.acceptChange()
 editor.commands.acceptAllChanges()
 editor.commands.rejectChange()
 editor.commands.rejectAllChanges()
-editor.commands.updateOpUserOption('id', 'nickname')
 
+editor.commands.updateOpUserOption('u-1001', 'Alice')
 ```
 
-## style
+## Styling
+
+The extension renders tracked content with `insert` and `delete` tags.
 
 ```css
 insert {
   color: green;
   text-decoration: underline;
 }
+
 delete {
   color: red;
   text-decoration: line-through;
 }
 ```
 
-###### Enjoy it...
+## Local Demo
 
-### publish
+This repository includes a minimal demo built with Vite and `@tiptap/starter-kit`.
+
+Start the demo locally:
+
+```bash
+npm run demo
+```
+
+Demo source files:
+
+- `demo/index.html`
+- `demo/main.js`
+- `demo/styles.css`
+
+What you can verify in the demo:
+
+- insert text while track change is enabled
+- delete normal text and see it preserved as a deletion mark
+- delete newly inserted text and see it removed directly
+- replace a selection and inspect both insertion and deletion marks
+- accept or reject the current change or all changes
+
+## Build
+
+```bash
 npm run build
+```
 
+## Publish
+
+```bash
 npm publish --registry=https://registry.npmjs.org
+```

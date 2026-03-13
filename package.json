@@ -1,6 +1,6 @@
 {
   "name": "tiptap-track-change-extension",
-  "version": "1.2.0",
+  "version": "1.3.0",
   "description": "A track change extension for Tiptap 3.18.0, similar to revision mode in Microsoft Word.",
   "keywords": [
     "tiptap",

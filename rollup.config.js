@@ -8,6 +8,7 @@ const typescript = require("rollup-plugin-typescript2");
 
 const config = {
   input: "src/index.ts",
+  external: (id) => /^@tiptap\/core(?:\/.*)?$/.test(id) || /^@tiptap\/pm(?:\/.*)?$/.test(id),
   output: [
     {
       file: "dist/index.cjs.js",
@@ -25,7 +26,7 @@ const config = {
   plugins: [
     autoExternal({ packagePath: "./package.json" }),
     sourcemaps(),
-    babel(),
+    babel({ babelHelpers: "bundled" }),
     commonjs(),
     typescript(),
   ],

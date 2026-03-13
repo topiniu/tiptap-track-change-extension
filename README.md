@@ -10,9 +10,9 @@ The demo is deployed on [render.com](https://www.render.com). You maybe need a V
 
 ## Installation
 
-just copy the ts file to your project or install from npm. it depends on the @tiptap/pm package to use ProseMirror api.
+Install from npm or copy `src/index.ts` into your project. This package targets `@tiptap/core@3.18.0` and `@tiptap/pm@3.18.0`.
 
-## Usage in Vue3
+## Usage in Vue3 with Tiptap 3
 
 ```javascript
 
@@ -38,9 +38,9 @@ extensions: [
 
 // accept one change near by the cursor or an active selection range
 editor.commands.acceptChange()
-editor.commands.acceptAllChange()
+editor.commands.acceptAllChanges()
 editor.commands.rejectChange()
-editor.commands.rejectAllChange()
+editor.commands.rejectAllChanges()
 editor.commands.updateOpUserOption('id', 'nickname')
 
 ```
@@ -48,11 +48,11 @@ editor.commands.updateOpUserOption('id', 'nickname')
 ## style
 
 ```css
-insertion {
+insert {
   color: green;
   text-decoration: underline;
 }
-deletion {
+delete {
   color: red;
   text-decoration: line-through;
 }

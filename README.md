@@ -126,10 +126,14 @@ This repository includes a GitHub Actions workflow at `.github/workflows/publish
 Trigger rule:
 
 - push a git tag that starts with `v`, for example `v1.0.0`
+- or publish a GitHub Release for a `v*` tag
 
-Required repository secret:
+Trusted publishing requirements:
 
-- `NPM_TOKEN`: an npm access token with publish permission for this package
+- configure this repository as a Trusted Publisher in npm
+- the trusted publisher workflow filename must match `publish.yml`
+- GitHub Actions will publish using OIDC, so `NPM_TOKEN` is not required
+- the workflow uses Node.js `22` to match npm trusted publishing requirements
 
 Typical release flow:
 
@@ -140,3 +144,8 @@ git push origin main
 git tag v1.0.0
 git push origin v1.0.0
 ```
+
+Or:
+
+1. push the tag
+2. create a GitHub Release for that tag

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Track Change Extension Demo</title>
+    
+    <script type="module" crossorigin src="/assets/index-4a74c768.js"></script>
+    <link rel="stylesheet" href="/assets/index-d9a06efd.css">
+  </head>
+  <body>
+    <div class="app">
+      <header class="hero">
+        <div>
+          <p class="eyebrow">Tiptap 3.18.0 Demo</p>
+          <h1>Track Change Extension</h1>
+          <p class="intro">
+            打开修订后直接输入、删除、选区替换，然后用接受/拒绝命令验证结果。
+          </p>
+        </div>
+        <div class="status-card">
+          <span class="status-label">当前状态</span>
+          <strong id="track-status">已关闭</strong>
+          <span id="selection-status" class="muted">光标: 0 - 0</span>
+        </div>
+      </header>
+
+      <section class="panel controls">
+        <div class="toolbar">
+          <button id="toggle-track" type="button">切换修订</button>
+          <button id="accept-change" type="button">接受当前</button>
+          <button id="reject-change" type="button">拒绝当前</button>
+          <button id="accept-all" type="button">接受全部</button>
+          <button id="reject-all" type="button">拒绝全部</button>
+          <button id="reset-doc" type="button" class="ghost">恢复示例内容</button>
+        </div>
+
+        <div class="toolbar secondary">
+          <label>
+            用户 ID
+            <input id="user-id" type="text" value="u-1001" />
+          </label>
+          <label>
+            用户昵称
+            <input id="user-name" type="text" value="Alice" />
+          </label>
+          <button id="apply-user" type="button" class="ghost">更新操作人</button>
+        </div>
+      </section>
+
+      <main class="workspace">
+        <section class="panel editor-panel">
+          <div class="panel-title">编辑区</div>
+          <div id="editor" class="editor"></div>
+        </section>
+
+        <aside class="panel side-panel">
+          <div class="panel-title">验证建议</div>
+          <ol class="checklist">
+            <li>开启修订后输入几个字，应包在绿色下划线的 <code>insert</code> 标签里。</li>
+            <li>删除普通文本，应以红色删除线保留在文档里。</li>
+            <li>删除刚插入的文本，应直接消失，不保留删除痕迹。</li>
+            <li>选中一段普通文本直接输入新内容，应同时产生删除和插入。</li>
+            <li>把光标放在某个修订旁边，点“接受当前”或“拒绝当前”，观察局部处理。</li>
+          </ol>
+
+          <div class="panel-title">当前 HTML</div>
+          <pre id="html-output" class="output"></pre>
+        </aside>
+      </main>
+    </div>
+
+    
+  </body>
+</html>

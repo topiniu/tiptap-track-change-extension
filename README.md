@@ -118,3 +118,25 @@ npm run build
 ```bash
 npm publish --registry=https://registry.npmjs.org
 ```
+
+## GitHub Actions Publish
+
+This repository includes a GitHub Actions workflow at `.github/workflows/publish.yml`.
+
+Trigger rule:
+
+- push a git tag that starts with `v`, for example `v1.0.0`
+
+Required repository secret:
+
+- `NPM_TOKEN`: an npm access token with publish permission for this package
+
+Typical release flow:
+
+```bash
+git add .
+git commit -m "chore: prepare release v1.0.0"
+git push origin main
+git tag v1.0.0
+git push origin v1.0.0
+```

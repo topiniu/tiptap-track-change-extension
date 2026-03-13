@@ -93,11 +93,21 @@ Start the demo locally:
 npm run demo
 ```
 
+Vue 3 demo:
+
+```bash
+npm run demo:vue3
+```
+
 Demo source files:
 
 - `demo/index.html`
 - `demo/main.js`
+- `demo/vue3.html`
+- `demo/vue3-main.js`
 - `demo/styles.css`
+
+The Vue 3 demo uses `@tiptap/vue-3` and is intended as a minimal integration reference for Vue projects.
 
 What you can verify in the demo:
 

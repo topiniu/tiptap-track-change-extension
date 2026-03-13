@@ -6,5 +6,11 @@ export default defineConfig({
   build: {
     outDir: resolve(__dirname, '../demo-dist'),
     emptyOutDir: true,
+    rollupOptions: {
+      input: {
+        main: resolve(__dirname, 'index.html'),
+        vue3: resolve(__dirname, 'vue3.html'),
+      },
+    },
   },
 })

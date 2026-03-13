@@ -1,7 +1,7 @@
 {
-  "name": "track-change-extension",
-  "version": "1.0.3",
-  "description": "A track change extension for tiptap editor. Just like the Office Word Revision.",
+  "name": "tiptap-track-change-extension",
+  "version": "1.0.0",
+  "description": "A track change extension for Tiptap 3.18.0, similar to revision mode in Microsoft Word.",
   "keywords": [
     "tiptap",
     "trackchange",
@@ -9,10 +9,14 @@
     "extension"
   ],
   "license": "MIT",
-  "author": "Ray Chen<ray_chenyuncai@163.com>",
+  "author": "topiniu",
   "repository": {
     "type": "git",
-    "url": "https://github.com/chenyuncai/tiptap-track-change-extension.git"
+    "url": "git+https://github.com/topiniu/tiptap-track-change-extension.git"
+  },
+  "homepage": "https://github.com/topiniu/tiptap-track-change-extension#readme",
+  "bugs": {
+    "url": "https://github.com/topiniu/tiptap-track-change-extension/issues"
   },
   "files": [
     "dist/",
@@ -45,6 +49,7 @@
     "@tiptap/pm": "3.18.0"
   },
   "publishConfig": {
-    "registry": "https://registry.npmjs.org/"
+    "registry": "https://registry.npmjs.org/",
+    "access": "public"
   }
 }

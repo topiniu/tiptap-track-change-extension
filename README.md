@@ -20,6 +20,12 @@ Peer dependencies:
 npm install @tiptap/core@3.18.0 @tiptap/pm@3.18.0
 ```
 
+Package install:
+
+```bash
+npm install tiptap-track-change-extension
+```
+
 If you want to run this fork locally:
 
 ```bash
@@ -29,7 +35,7 @@ npm install
 ## Usage
 
 ```ts
-import TrackChangeExtension from 'track-change-extension'
+import TrackChangeExtension from 'tiptap-track-change-extension'
 
 const editor = new Editor({
   extensions: [
